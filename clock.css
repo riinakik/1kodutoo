@@ -1,0 +1,219 @@
+/* Globaalne stiil HTML ja BODY jaoks */
+html, body {
+    font-family: 'Bebas Neue', sans-serif; /* Font kogu lehele */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Peidab kerimisriba */
+    background-image: url("images/comicbook.jpg"); /* Taustapilt */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  /* Peamine konteiner */
+  #container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Täisekraani kõrgus */
+    width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+  
+  /* Kellaaeg */
+  #time {
+    display: flex;
+    font-size: 10vw;
+    gap: 1vw; /* Vahe komponentide vahel */
+    margin-bottom: 2vh;
+    line-height: 1;
+  }
+  
+  #time > div {
+    margin: 0;
+  }
+  
+  /* Nädalapäev */
+  #weekday {
+    font-size: 2vw;
+    margin: 0;
+  }
+  
+  /* Kuupäev */
+  #date {
+    font-size: 1.5vw;
+    margin-top: 1vh;
+    margin-bottom: 0;
+  }
+  
+  /* Reeglid väiksematele ekraanidele */
+  @media (max-width: 768px) {
+    #time {
+      font-size: 12vw;
+      gap: 2vw;
+    }
+  
+    #weekday {
+      font-size: 5vw;
+    }
+  
+    #date {
+      font-size: 4vw;
+    }
+  }
+  
+  /* Dropdown konteiner */
+  .dropdown-container {
+    margin-top: 3vh;
+    font-size: 1.8vw;
+  }
+  
+  .dropdown-container label {
+    display: block;
+    margin-bottom: 1vh;
+    color: #333;
+  }
+  
+  /* Ajavööndi valiku stiil */
+  #timezone-select {
+    padding: 1vh 2vw;
+    border-radius: 0.5vw;
+    font-size: 1.5vw;
+    cursor: pointer;
+    border: 1px solid #888;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  #timezone-select:hover {
+    background-color: #ddeeff;
+  }
+  
+  /* Dropdowni stiil väiksemates seadmetes */
+  @media (max-width: 768px) {
+    .dropdown-container {
+      font-size: 4vw;
+    }
+  
+    #timezone-select {
+      font-size: 4vw;
+      padding: 1vh;
+    }
+  }
+  
+  /* Kellakasti stiil */
+  #clock-box {
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 50vw; /* Ovaalne kuju */
+    padding: 2vh 4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: border 0.3s ease, padding 0.3s ease;
+    border: 8px solid transparent; /* Nähtamatu ääris vaikimisi */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); /* Pehme vari */
+  }
+  
+  /* Teksti tihedus */
+  #time, #weekday, #date {
+    line-height: 1.2;
+  }
+  
+  /* Jaluse stiil */
+  #footer {
+    position: absolute;
+    bottom: 1.5vh;
+    left: 2vw;
+    color: white;
+    font-size: 1.6vw;
+    background-color: black;
+    padding: 1vh 2vw;
+    border-radius: 50vw; /* Must ovaal */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  #footer a {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  /* "Select timezone" tekst ovaalis */
+  .timezone-label-oval {
+    background-color: white;
+    border-radius: 50vw;
+    padding: 0.5vh 2vw;
+    margin-bottom: 1vh;
+    font-size: 1.6vw;
+    color: #333;
+    font-weight: bold;
+    display: inline-block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+  }
+  
+  /* Dropdown konteineri üldstiil */
+  .custom-dropdown {
+    position: relative;
+    margin-top: 3vh;
+    text-align: center;
+  }
+  
+  /* Peidetud valikukast (aktiveeritakse JS abil) */
+  #timezone-select {
+    display: none;
+    margin-top: 1vh;
+    padding: 1vh 2vw;
+    border-radius: 2vw;
+    font-size: 1.5vw;
+    cursor: pointer;
+    border: 1px solid #888;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  /* Dropdown nähtavale kui .active klass on lisatud */
+  .custom-dropdown.active #timezone-select {
+    display: block;
+  }
+  
+  /* "Select timezone" ovaali stiil */
+  #timezone-toggle {
+    background-color: white;
+    border-radius: 50vw;
+    padding: 0.5vh 2vw;
+    font-size: 1.8vw;
+    color: #333;
+    font-weight: bold;
+    display: inline-block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  /* Hõõgumise animeerimine kellaümbrusele */
+  @keyframes glowPulse {
+    0% {
+      box-shadow: 0 0 10px var(--glow-color);
+    }
+    50% {
+      box-shadow: 0 0 40px var(--glow-color);
+    }
+    100% {
+      box-shadow: 0 0 10px var(--glow-color);
+    }
+  }
+  
+  
+
+  
+  
+  
+  
+  
+  

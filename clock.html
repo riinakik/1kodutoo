@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fullscreen Clock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="clock.css" />
+    <script src="clock.js" defer></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="clock-box">
+        <div id="time">
+          <div id="hours">00h</div>
+          <div id="minutes">00m</div>
+          <div id="seconds">00s</div>
+        </div>
+        <div id="weekday">Weekday</div>
+        <div id="date">Date Month Year</div>
+      </div>
+      <div class="custom-dropdown">
+        <div id="timezone-toggle" class="timezone-label-oval">Select timezone</div>
+        <select id="timezone-select">
+          <option value="Europe/London">London (UTC+0/UTC+1)</option>
+          <option value="Europe/Tallinn">Estonia (UTC+2)</option>
+          <option value="America/New_York">New York (UTC-5)</option>
+          <option value="Asia/Tokyo">Tokyo (UTC+9)</option>
+        </select>
+      </div>
+    </div>
+    <footer id="footer">
+        Author: Riina Kikkas &nbsp; | &nbsp;
+        <a href="https://github.com/riinakik/1kodutoo" target="_blank">
+          GitHub repository
+        </a>
+      </footer>
+  </body>
+</html>
