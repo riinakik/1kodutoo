@@ -1,7 +1,6 @@
 // Muutujate deklareerimine
-let h, m, s, dateElement, weekdayElement, timezoneElement;
+let h, m, s, dateElement, weekdayElement;
 let hourVal, minuteVal, secondVal, day, month, year;
-let r, g, b;
 let fontSize = 10;
 let selectedTimezone = "Europe/Tallinn"; // Vaikimisi ajavöönd
 let backgroundOn = true; // Taustapildi olek
@@ -12,32 +11,33 @@ m = document.getElementById("minutes");
 s = document.getElementById("seconds");
 dateElement = document.getElementById("date");
 weekdayElement = document.getElementById("weekday");
-timezoneElement = document.getElementById("timezone");
 
 // Kuude nimed
 let monthNames = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 // Nädalapäevade nimed
 let weekdayNames = [
-  "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
 ];
-
-// 📌 ChatGPT prompt: "tahan, et tekst värv muutuks järjest punane roheline sinine must"
-let colorIndex = 0;
-const colors = ["red", "green", "blue", "black"];
-
-// 📌 ChatGPT prompt: "tahan, et teksti värv muutuks klaviatuuri vajutamisel ja kuupäeval klikkides"
-function changeColor() {
-  const chosenColor = colors[colorIndex];
-  document.getElementById("clock-box").style.color = chosenColor;
-  colorIndex = (colorIndex + 1) % colors.length;
-}
-
-window.addEventListener("keypress", changeColor);
-dateElement.addEventListener("click", changeColor);
 
 // Kella ja kuupäeva uuendamine
 function updateClock() {
@@ -86,23 +86,11 @@ function updateClock() {
   dateElement.innerHTML = day + " " + monthNames[month] + " " + year;
 }
 
-// Timezone muutmine ja salvestamine
-document
-  .getElementById("timezone-select")
-  .addEventListener("change", function (e) {
-    selectedTimezone = e.target.value;
-    localStorage.setItem("selectedTimezone", selectedTimezone);
-    updateClock(); // uuendab kohe
-  });
-
-// Laadimisel loe eelmine timezone localStorage-ist
+// ChatGPT prompt: "lehe laadimisel loe eelmine timezone localStorage-ist"
 document.addEventListener("DOMContentLoaded", function () {
   const storedTimezone = localStorage.getItem("selectedTimezone");
   if (storedTimezone) {
     selectedTimezone = storedTimezone;
-    document.getElementById("timezone-select").value = storedTimezone;
-  } else {
-    document.getElementById("timezone-select").value = selectedTimezone;
   }
 });
 
@@ -110,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
 setInterval(updateClock, 1000);
 updateClock();
 
-// 📌 ChatGPT prompt: "kuidas muuta fondi suurust nooltega ja koos sellega ovaali suurust"
+// ChatGPT prompt: "muuda fondi suurust nooltega ja koos sellega clock-boxi suurust"
 window.addEventListener("keydown", function (e) {
   if (e.key === "ArrowUp") {
     fontSize += 1;
@@ -127,52 +115,82 @@ window.addEventListener("keydown", function (e) {
     fontSize * 0.2 + "vh " + fontSize * 0.4 + "vw";
 });
 
-// 📌 ChatGPT prompt: "tahan, et taustapilt kaoks kui klikin taustal ja tuleks tagasi uuesti klikates"
+// ChatGPT prompt: "tahan, et klikk taustapildil peidab selle ja muudab tausta mustaks
+// klikk mustal taustal toob pildi tagasi"
 document.getElementById("container").addEventListener("click", function (e) {
   if (e.target.id === "container") {
     if (backgroundOn) {
       document.body.style.backgroundImage = "none";
       document.body.style.backgroundColor = "black";
     } else {
-      document.body.style.backgroundImage = 'url("images/comicbook.jpg")';
+      document.body.style.backgroundImage = 'url("images/book1.jpg")';
       document.body.style.backgroundColor = "";
     }
     backgroundOn = !backgroundOn;
   }
 });
 
-// 📌 ChatGPT prompt: "tahan et select timezone avaneks ja sulguks kui vajutan peale"
-document
-  .getElementById("timezone-toggle")
-  .addEventListener("click", function () {
-    document.querySelector(".custom-dropdown").classList.toggle("active");
-  });
+// ChatGPT prompt: "spacebariga tekib ja vahetub clock-boxi ümber hõõguv joon"
+let colorIndex = 0;
+const glowColors = [
+  "rgb(186, 134, 11)", 
+  "rgb(180, 40, 40)",   
+  "rgb(0, 128, 128)",   
+  "rgb(180, 180, 180)"  
+];
 
-// 📌 ChatGPT prompt: "tahan et dropdown sulguks ka kui valin sama timezone mis oli juba valitud"
-document
-  .getElementById("timezone-select")
-  .addEventListener("change", function () {
-    document.querySelector(".custom-dropdown").classList.remove("active");
-  });
-
-document
-  .getElementById("timezone-select")
-  .addEventListener("blur", function () {
-    document.querySelector(".custom-dropdown").classList.remove("active");
-  });
-
-// 📌 ChatGPT prompt: "tahan, et kui klikkan clock-boxi peale, siis ilmuks värviline hõõguv joon"
-document.getElementById("clock-box").addEventListener("click", function () {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
-  const borderColor = "rgb(" + r + "," + g + "," + b + ")";
-
-  const box = document.getElementById("clock-box");
-
-  // Lisa äärise värv ja sära
-  box.style.border = "8px solid " + borderColor;
-  box.style.setProperty("--glow-color", borderColor);
-  box.style.animation = "glowPulse 2s infinite";
+window.addEventListener("keydown", function (e) {
+  if (e.code === "Space") {
+    const box = document.getElementById("clock-box");
+    const borderColor = glowColors[colorIndex];
+    box.style.border = "8px solid " + borderColor;
+    box.style.setProperty("--glow-color", borderColor);
+    box.style.animation = "glowPulse 2s infinite";
+    colorIndex = (colorIndex + 1) % glowColors.length;
+  }
 });
 
+// ChatGPT prompt: " klikk clock-boxil eemaldab hõõguva joone"
+document.getElementById("clock-box").addEventListener("click", function () {
+  const box = document.getElementById("clock-box");
+  box.style.border = "8px solid transparent";
+  box.style.animation = "none";
+});
+
+// ChatGPT prompt: "tahan valida ajavööndi, klikkides sobival timezone-buttonil"
+document.querySelectorAll(".timezone-button").forEach(function (element) {
+  element.addEventListener("click", function () {
+    selectedTimezone = this.getAttribute("data-tz");
+    localStorage.setItem("selectedTimezone", selectedTimezone);
+    updateClock();
+
+    // Märgi aktiivne visuaalselt
+    document.querySelectorAll(".timezone-button").forEach(function (el) {
+      el.classList.remove("active");
+    });
+    this.classList.add("active");
+  });
+});
+
+// ChatGPT prompt: "tahan vahetada fonte klikkides "corner-button" nupul"
+const fonts = [
+  "'Bebas Neue', sans-serif",
+  "'Orbitron', sans-serif",
+  "'Rajdhani', sans-serif",
+  "'Anton', sans-serif",
+  "'Rubik Mono One', sans-serif",
+];
+
+let currentFontIndex = 0;
+
+document.getElementById("corner-button").addEventListener("click", function () {
+  currentFontIndex = (currentFontIndex + 1) % fonts.length;
+  const selectedFont = fonts[currentFontIndex];
+  document.body.style.fontFamily = selectedFont;
+});
+
+// Darkmode osa
+document.getElementById("dark-toggle").addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
+  });
+  

@@ -4,12 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fullscreen Clock</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="clock.css" />
     <script src="clock.js" defer></script>
   </head>
+
   <body>
     <div id="container">
+      <div id="dark-toggle">Dark Mode</div>
       <div id="clock-box">
         <div id="time">
           <div id="hours">00h</div>
@@ -19,21 +42,19 @@
         <div id="weekday">Weekday</div>
         <div id="date">Date Month Year</div>
       </div>
-      <div class="custom-dropdown">
-        <div id="timezone-toggle" class="timezone-label-oval">Select timezone</div>
-        <select id="timezone-select">
-          <option value="Europe/London">London (UTC+0/UTC+1)</option>
-          <option value="Europe/Tallinn">Estonia (UTC+2)</option>
-          <option value="America/New_York">New York (UTC-5)</option>
-          <option value="Asia/Tokyo">Tokyo (UTC+9)</option>
-        </select>
+      <div id="timezone-options" class="timezone-options">
+        <div class="timezone-button" data-tz="Europe/Tallinn">Estonia</div>
+        <div class="timezone-button" data-tz="Europe/London">London</div>
+        <div class="timezone-button" data-tz="America/New_York">New York</div>
+        <div class="timezone-button" data-tz="Asia/Tokyo">Tokyo</div>
       </div>
     </div>
     <footer id="footer">
-        Author: Riina Kikkas &nbsp; | &nbsp;
-        <a href="https://github.com/riinakik/1kodutoo" target="_blank">
-          GitHub repository
-        </a>
-      </footer>
+      Author: Riina Kikkas &nbsp; | &nbsp;
+      <a href="https://github.com/riinakik/1kodutoo" target="_blank">
+        GitHub repository
+      </a>
+    </footer>
+    <div id="corner-button">Click to change font</div>
   </body>
 </html>

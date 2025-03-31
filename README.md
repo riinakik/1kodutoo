@@ -2,17 +2,24 @@
 
 **Autor:** Riina Kikkas
 
-Rakendus kuvab täisekraanil kellaaja, nädalapäeva, kuupäeva ja aasta.
+Rakendus kuvab täisekraanil reaalajas kellaaja, nädalapäeva, kuupäeva ja aasta.
 
-Kasutaja saab muuta:
-- ajavööndit (select timezone)
-- fonti suurust üles-alla nooleklahvidega
-- nooleklahvidega fonti suurust muutes muutub ka kella valge tagatausta suurus
-- kella teksti värvi (muutub spacebarile vajutades)
-- tausta (vaheldub pildi ja musta vahel)
-- kella valgel taustal klikkides, ilmub sinna värviline hõõguv joon, mille värvi saab hiireklikiga muuta
+## Kasutaja saab muuta:
 
+- **Ajavööndit:** klõpsates linnanimedel (London, Tallinn, New York, Tokyo)
 
-Ekraanipildid rakendusest:
-(images/screenshot.png)
-(images/screenshot1.png)
+- **Fondi suurust:** nooleklahvidega ↑ ja ↓ (suurusega muutub ka clock-box)
+
+- **Taustapilti:** klõpsates taustal vahelduvad taustapilt ja must taust
+
+- **Värvilise joone lisamine:** spacebarile vajutades lisatakse clock-boxile värviline joon (värvi saab muuta spacebari vajutusega)
+
+- **Värvilise joone eemaldamine:** klõps clock-boxi sees eemaldab värvilise joone
+
+- **Kirjatüüpi:** nupule „Click to change font“ vajutades vahelduvad viis Google fonti
+
+- **Tume režiim:** üleval paremas nurgas olev nupp „Dark Mode“ lülitab sisse tumeda kujunduse
+
+## Ekraanipildid rakendusest:
+![Ekraanipilt 1](images/screenshot.png)  
+
