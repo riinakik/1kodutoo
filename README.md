@@ -22,4 +22,5 @@ Rakendus kuvab täisekraanil reaalajas kellaaja, nädalapäeva, kuupäeva ja aas
 
 ## Ekraanipilt rakendusest:
 ![Ekraanipilt 1](images/screenshot.png)  
+![Ekraanipilt 2](images/screenshot1.png)  
 
