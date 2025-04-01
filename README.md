@@ -20,6 +20,6 @@ Rakendus kuvab täisekraanil reaalajas kellaaja, nädalapäeva, kuupäeva ja aas
 
 - **Tume režiim:** üleval paremas nurgas olev nupp „Dark Mode“ lülitab sisse tumeda kujunduse
 
-## Ekraanipildid rakendusest:
+## Ekraanipilt rakendusest:
 ![Ekraanipilt 1](images/screenshot.png)  
 
